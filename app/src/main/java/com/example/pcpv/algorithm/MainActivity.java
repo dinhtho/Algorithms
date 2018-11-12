@@ -13,8 +13,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         int arr[] = {0, 15, 20, 35, 40, 54, 62, 77, 84};
-        Log.i(TAG, "onCreateRecursion : " + binarySearchRecursion(arr, 0));
-        Log.i(TAG, "onCreate: " + binarySearch(arr, 0));
+        Log.i(TAG, "onCreateRecursion : " + binarySearchRecursion(arr, 84));
+        Log.i(TAG, "onCreate: " + binarySearch(arr, 84));
     }
 
     private static final String TAG = "MainActivity";
@@ -29,9 +29,9 @@ public class MainActivity extends AppCompatActivity {
             } else if (arr[middle] < number) {
                 start = middle + 1;
             } else {
-                return start + middle;
+                return middle;
             }
-            return binarySearchRecursion(Arrays.copyOfRange(arr, start, end), number);
+            return start + binarySearchRecursion(Arrays.copyOfRange(arr, start, end), number);
         }
         return null;
     }
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         while (end > start) {
             int middle = start + (end - start) / 2;
             if (arr[middle] > number) {
-                end = middle - 1;
+                end = middle;
             } else if (arr[middle] < number) {
                 start = middle + 1;
             } else {
