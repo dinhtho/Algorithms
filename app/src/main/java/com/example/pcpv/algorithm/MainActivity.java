@@ -15,6 +15,9 @@ public class MainActivity extends AppCompatActivity {
         int arr[] = {0, 15, 20, 35, 40, 54, 62, 77, 84};
         Log.i(TAG, "onCreateRecursion : " + binarySearchRecursion(arr, 84));
         Log.i(TAG, "onCreate: " + binarySearch(arr, 84));
+
+        int nDisks = 3;
+        doTowers(nDisks, 'A', 'B', 'C');
     }
 
     private static final String TAG = "MainActivity";
@@ -50,5 +53,19 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return null;
+    }
+
+    public static void doTowers(int topN, char from,
+                                char inter, char to) {
+        if (topN == 1) {
+            System.out.println("Disk " + topN + " from "
+                    + from + " to " + to);
+        } else {
+            doTowers(topN - 1, from, to, inter);
+            System.out.println("Disk "
+                    + topN + " from " + from + " to " + to);
+            doTowers(topN - 1, inter, from, to);
+        }
+
     }
 }
